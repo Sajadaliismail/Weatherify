@@ -53,8 +53,8 @@ export const getCurrentHour = (
 ): number => {
   if (!date) return 1;
   const data = new Date(date * 1000);
-  let localHour;
-  localHour = data.toLocaleTimeString([], {
+
+  const localHour = data.toLocaleTimeString([], {
     hour: "2-digit",
     hour12: false,
     timeZone: timeZone || undefined,

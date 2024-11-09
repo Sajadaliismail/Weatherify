@@ -5,6 +5,7 @@ export const fetchCordinates = async () => {
     if (!response.ok) throw new Error("Error getting location data");
     return data;
   } catch (error) {
+    console.log(error);
     throw new Error("Error getting location data");
   }
 };

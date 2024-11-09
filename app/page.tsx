@@ -28,7 +28,6 @@ export default function Home() {
   const { error, location } = UseFetchCordinates(locationData);
 
   const [imageIndex, setImageIndex] = useState(1);
-  // const [tempInDegree, setTempInDegree] = useState(false);
   const [hourlyData, setHourlyData] = useState<chartDataProps[] | null>(null);
   const [searchResult, setSearchResult] = useState<placeDetails[] | []>([]);
   const [chartValue, setChartValue] = useState<
@@ -85,6 +84,7 @@ export default function Home() {
       };
     });
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setWeatherData(weatherDetails);
     const currHour = getCurrentHour(
@@ -92,10 +92,11 @@ export default function Home() {
       weatherData?.timezone
     );
     const index = Math.round(currHour / 1.5);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     index > 0 ? setImageIndex(index) : setImageIndex(1);
     if (weatherData?.hourly) {
-      let hourly: HourlyWeatherData[] = weatherData?.hourly;
-      let chartData = hourly.map((data) => {
+      const hourly: HourlyWeatherData[] = weatherData?.hourly;
+      const chartData = hourly.map((data) => {
         return {
           Hour: getCurrentHour(data.dt),
           Wind: Number((data?.wind_speed * 3.6).toFixed(2)),
@@ -105,6 +106,7 @@ export default function Home() {
       });
       if (chartData) setHourlyData(chartData.slice(0, 10));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weatherDetails]);
 
   if (weatherError || error)
@@ -129,6 +131,11 @@ export default function Home() {
         transition: "all 0.5s ease-in-out",
       }}
     >
+      {loading && (
+        <div className="flex justify-center items-center h-screen">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+        </div>
+      )}
       {weatherData && (
         <div className="bg-[#e7e7e786]  text-black flex flex-col  mx-5 rounded-xl p-5">
           <div className="flex md:flex-row flex-col items-center md:items-start  md:gap-16 gap-2">
