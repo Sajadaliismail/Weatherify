@@ -18,7 +18,6 @@ export const convertToLocaleTime = (
   const data = new Date(date * 1000);
 
   const dateString = data.toDateString();
-  const time = data.toLocaleTimeString("en-US");
 
   const localeTime = data.toLocaleTimeString("en-US", {
     hour: "2-digit",
