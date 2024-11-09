@@ -116,7 +116,7 @@ export default function Home() {
   if (weatherError || error)
     return (
       <div
-        className="h-[100vh] flex align-middle justify-center items-center"
+        className="md:file:h-[100vh] flex align-middle justify-center items-center"
         style={{
           backgroundImage: `url(bg/Desert${imageIndex}.jpg)`,
           backgroundSize: "cover",
@@ -127,7 +127,7 @@ export default function Home() {
     );
   return (
     <div
-      className="h-[100vh] md:flex  align-middle justify-center items-center md:p-5 p-1"
+      className="md:h-[100vh] md:flex  align-middle justify-center items-center md:p-5 p-1"
       style={{
         backgroundImage: `url(bg/Desert${imageIndex}.jpg)`,
         backgroundSize: "cover",
