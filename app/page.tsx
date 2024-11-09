@@ -109,7 +109,7 @@ export default function Home() {
           Temperature: Number(data.temp.toFixed(1)),
         };
       });
-      if (chartData) setHourlyData(chartData.slice(0, 10));
+      if (chartData) setHourlyData(chartData.slice(0, 7));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weatherDetails]);
@@ -142,7 +142,7 @@ export default function Home() {
         </div>
       )}
       {weatherData && (
-        <div className="bg-[#e7e7e786]  text-black flex flex-col  mx-5 rounded-xl p-5">
+        <div className="bg-[#e7e7e786]  text-black flex flex-col  md:mx-5 mx-1 rounded-xl p-5">
           <div className="flex md:flex-row flex-col items-center md:items-start  md:gap-16 gap-2">
             <div className="flex flex-col">
               <span className="md:text-4xl text-xl font-bold">
