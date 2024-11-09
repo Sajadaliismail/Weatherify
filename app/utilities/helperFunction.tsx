@@ -14,17 +14,16 @@ export const convertToLocaleTime = (
       day: "",
       actualTime: "",
     };
-  console.log(timeZone);
 
   const data = new Date(date * 1000);
 
   const dateString = data.toDateString();
   const time = data.toLocaleTimeString("en-US");
-  console.log(time);
 
   const localeTime = data.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false,
     timeZone: timeZone || undefined,
     timeZoneName: "shortGeneric",
   });
@@ -32,6 +31,8 @@ export const convertToLocaleTime = (
   const actualTime = data.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false,
+
     timeZoneName: "shortGeneric",
   });
 

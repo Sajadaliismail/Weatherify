@@ -76,7 +76,6 @@ export default function Home() {
 
     const data: [] = await response.json();
     setSearchResult(data);
-    console.log(data);
   };
 
   const handleSelect = (place: placeDetails) => {
@@ -112,7 +111,7 @@ export default function Home() {
       if (chartData) setHourlyData(chartData.slice(0, 7));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [weatherDetails]);
+  }, [weatherDetails, imageIndex]);
 
   if (weatherError || error)
     return (
