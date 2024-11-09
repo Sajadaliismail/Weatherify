@@ -34,22 +34,27 @@ export default function Home() {
     "Wind" | "Humidity" | "Temperature"
   >("Wind");
   const [chartWidth, setChartWidth] = useState(() => {
-    if (window.innerWidth - 50 < 780) return window.innerWidth - 50;
-    else return 780;
+    if (typeof window !== "undefined") {
+      return window.innerWidth - 50 < 780 ? window.innerWidth - 50 : 780;
+    }
+    return 780;
   });
 
   useEffect(() => {
     const handleResize = () => {
       setChartWidth(() => {
-        if (window.innerWidth - 50 < 780) return window.innerWidth - 50;
-        else return 780;
+        return window.innerWidth - 50 < 780 ? window.innerWidth - 50 : 780;
       });
     };
 
-    window.addEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+    }
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
     };
   }, []);
   const [searchWord, setSearchWord] = useState<string>("");
